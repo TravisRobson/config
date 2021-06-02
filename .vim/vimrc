@@ -1,0 +1,43 @@
+
+" MINIMAL FORMATTING:
+
+" The following are well described in the post: https://vi.stackexchange.com/a/10125
+filetype on " Detect the file type, and set the `filetype` option (e.g. investigate with :set filetype?).
+filetype plugin on " 
+filetype indent on " 
+
+let g:load_doxygen_syntax=1 " Doxygen syntax highlighting.
+syntax on " Enable syntax highlighting.
+set backspace=indent,eol,start " Give backspace the option to delete indents, end of line (eol),
+                               " and start positions.
+set hidden " Alow you close vim even if there are open buffers.
+set noswapfile " Don't keep .<filename>.swp files around.
+
+" Environment variables to help switching around files.
+let $RTP=split(&runtimepath, ',')[0]
+let $RC="$HOME/.vim/vimrc" " To get to vimrc real fast.`
+
+" FORMATTING:
+
+set shiftwidth=2 " Indentation level to be 2 spaces.
+set tabstop=2 " Tabs should be 2 spaces.
+set softtabstop=2 " Want tabs to look like they're 2 spaces.
+set expandtab " Have the insertion of a `tab` character to expand to 2 spaces.
+set autoindent "
+set smartindent "
+
+setlocal colorcolumn=110 " Create vertical column to alert you of long lines of code.
+set number " Display line numbers.
+"set nowrap " Don't wrap long lines of code
+
+
+" SEARCHING:
+
+set smartcase " Don't be case sensitive while searching unless you explicity type capitals.
+set incsearch " Incremental search, so search before you've typed the whole word.
+set path+=** " Recursive search dirs relative to current working directory.
+set wildignore=*.pyc,*/__pycache__/*
+
+
+
+
