@@ -3,25 +3,10 @@ PATH=$PATH:$HOME/bin
 
 uname_out=$(uname -s) # Which system are we running on?
 
-alias ..="cd .."
-alias ...="cd ..; cd .."
-alias ....="cd ..; cd ..; cd.."
-
-if [ $uname_out = Darwin ]; then
-  alias ls="gls --color=auto"
+if [ -e $HOME/.bash_aliases ]; then
+  source $HOME/.bash_aliases
 fi
 
-alias rc="vim ~/.bashrc"
-alias src="source ~/.bashrc"
-
-alias gs="git status"
-alias ga="git add"
-alias gc="git commit"
-
-# used to commit my dotfiles to my github repo
-alias config="git --git-dir=$HOME/.myconfig --work-tree=$HOME"
-
-red="\[033[01;31m\]" # bold red
 
 function git_branch() {
   if [ -d .git ] ; then
@@ -31,11 +16,4 @@ function git_branch() {
   fi
 }
 
-PROMPT_COMMAND='PS1="\`echo -e \"$) \" \`"' 
 PROMPT_COMMAND='PS1="\`if [ $? = 0 ]; then echo -e \"\[\033[01;32m\]:)\"; else echo -e \"\033[01;31m\]:(\"; fi\` \
-\033[01;34m\][\w] $(git_branch)\n\033[01;32m\]\u@\h$\033[00m\] "'
-
-#'PS1="\`if [ \$? = 0 ]; then echo :); else echo :); fi\`"'
-  #\033[01;34m\][\w] $(git_branch)\n\033[01;32m\]\u@\h $\033[00m\]"'
-
-#export PS1="\`if [ \$? = 0 ]; then echo -e '\[\033[01;32m\]:)';else echo -e '\033[01;31m\]:('; fi\` \033[01;34m\][\w] $(git_branch)\n\033[01;32m\]\u@\h $\033[00m\] "
