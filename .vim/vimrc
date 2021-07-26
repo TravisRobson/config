@@ -1,4 +1,3 @@
-
 " MINIMAL FORMATTING:
 
 " The following are well described in the post: https://vi.stackexchange.com/a/10125
@@ -10,7 +9,7 @@ let g:load_doxygen_syntax=1 " Doxygen syntax highlighting.
 syntax on " Enable syntax highlighting.
 set backspace=indent,eol,start " Give backspace the option to delete indents, end of line (eol),
                                " and start positions.
-set hidden " Alow you close vim even if there are open buffers.
+set hidden " Allow you close vim even if there are open buffers.
 set noswapfile " Don't keep .<filename>.swp files around.
 
 " Environment variables to help switching around files.
@@ -25,19 +24,55 @@ set softtabstop=2 " Want tabs to look like they're 2 spaces.
 set expandtab " Have the insertion of a `tab` character to expand to 2 spaces.
 set autoindent "
 set smartindent "
+set nocompatible " Don't pretend we're working with vi.
+set spell " Spellcheck enabled
+set encoding=utf-8
+set showcmd " Show the bottom command line no matter what (plugins may disable it at times).
+set showmode " ?
+"set t_Co=256
 
 setlocal colorcolumn=110 " Create vertical column to alert you of long lines of code.
+highlight colorcolumn ctermbg=darkgray
 set number " Display line numbers.
 "set nowrap " Don't wrap long lines of code
 
 
 " SEARCHING:
-
-set smartcase " Don't be case sensitive while searching unless you explicity type capitals.
+set hlsearch " Highlight all search results in file.
+set ignorecase " Ignore case in search results.
+set showmatch " Show matching bracket.
+set smartcase " Don't be case sensitive while searching unless you explicitly type capitals.
 set incsearch " Incremental search, so search before you've typed the whole word.
 set path+=** " Recursive search dirs relative to current working directory.
 set wildignore=*.pyc,*/__pycache__/*
+set wildignore+=**/build/** " Usually used for my CMake build folder
+
+" Map <C-L> (redraw screen) to also turn off search highlighting until the
+" next search
+nnoremap <C-L> :nohl<CR><C-L>
+
+" NOW WE CAN:
+"   - Hit `tab` to :find by partial matches
+"   - Use * to make it fuzzy.
+"   - :b Let's you autocomplete any open buffer (e.g. files you have open).
+
+" TAG JUMPING
+command! MakeTags ~ctags -R --exclude=*.ipynb_checkpoints/* .
+
+" NOW WE CAN:
+"   - Use ^] to jump to tag under cursor
+"   - Use g^] for ambiguous tags
+"   - Use ^t to jump back up the tag stack
+
+" Set filetype to include doxygen
+augroup project
+  autocmd!
+  autocmd BufRead,BufNewFile *.hpp,*.cpp set filetype=cpp.doxygen
+augroup END
 
 
-
-
+let g:netrw_liststyle=3 " tree view
+let g:netrw_banner=0 " Disable the annoying banner
+let g:netrw_browse_split=4 " Open in prior window
+let g:netrw_altv=1 " Open split to the right
+let g:netrw_winsize=20
