@@ -37,6 +37,7 @@ set number " Display line numbers.
 "set nowrap " Don't wrap long lines of code
 
 " https://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
+set laststatus=2
 set statusline=%t       "tail of the filename
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
 set statusline+=%{&ff}] "file format
