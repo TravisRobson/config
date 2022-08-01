@@ -9,6 +9,6 @@ if [ -e $HOME/.bash_aliases ]; then
 fi
 
 # Autocomplete for git commands
-if [[ -f ~/git-completion.bash ]]; then
-  source ~/git-completion.bash
+if [[ -f ~/.git-completion.bash ]]; then
+  source ~/.git-completion.bash
 fi

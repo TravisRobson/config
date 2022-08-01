@@ -10,11 +10,20 @@ git_branch() {
   git branch 2>/dev/null | set -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
+parse_git_branch () {
+    while read -r branch; do
+        [[ $branch = \** ]] && current_branch=${branch#* }
+    done < <(git branch 2>/dev/null)
+
+    [[ $current_branch ]] && printf ' [%s]' "$current_branch"
+}
+
 PS1="\`if [ \$? = 0 ]; then echo \[\033[33m\]^_^\[\033[0m\]; else echo \[\033[31m\]0_0\[\033[0m\]; fi\`"
 PS1+=" "
 PS1+="\[\033[0;93m\]\u\[\033[0m\]"
 PS1+=" "
 PS1+="\[\033[0;95m\]\w\[\033[0m\]" # Full path to working directory
-PS1+="\[\033[0;92m\]$(git_branch)\[\033[0m\]" # Current git branch
+#PS1+="\[\033[0;92m\]$(git_branch)\[\033[0m\]" # Current git branch
+PS1+="\[\033[0;92m\]\$(parse_git_branch)\[\033[0m\]" # Current git branch
 PS1+="\n --> "
 export PS1
