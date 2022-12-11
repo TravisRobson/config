@@ -4,10 +4,6 @@ alias ....="cd ..; cd ..; cd.."
 
 alias gen="cd ~/Documents/general"
 
-#if [ $uname_out = Darwin ]; then
-#  alias ls="gls --color=auto"
-#fi
-
 alias rc="vim ~/.bashrc"
 alias src="source ~/.bashrc"
 

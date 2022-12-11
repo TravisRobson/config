@@ -87,3 +87,10 @@ maketecheasier
 charlesdobson
 macos
 cce5823006e
+Homebrew
+MANPATH
+ed25519
+IdentityFile
+UseKeychain
+AddKeysToAgent
+OPENSSH

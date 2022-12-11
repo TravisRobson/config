@@ -1,1 +1,9 @@
 .cfg
+.DS_Store
+.vscode/
+Desktop/
+Library/
+Movies/
+Music/
+Pictures/
+Public/

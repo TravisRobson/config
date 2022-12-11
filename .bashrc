@@ -12,3 +12,6 @@ fi
 if [[ -f ~/.git-completion.bash ]]; then
   source ~/.git-completion.bash
 fi
+
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
