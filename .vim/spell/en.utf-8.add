@@ -83,3 +83,5 @@ fi
 python3
 JSON
 CMakeFiles
+Homebrew
+MANPATH
