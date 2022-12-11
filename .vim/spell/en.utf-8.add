@@ -85,3 +85,8 @@ JSON
 CMakeFiles
 Homebrew
 MANPATH
+ed25519
+IdentityFile
+UseKeychain
+AddKeysToAgent
+OPENSSH
